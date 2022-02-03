@@ -3,12 +3,12 @@
 ## To use
 
 Standard setup really, I have not changed much in that respect so:
-`yarn install`
-`yarn start` - to run both app and server
-`yarn server` - to run just the server
-`yarn server-temp` - I added this to run the server by itself but with respawning on code changes
-`yarn jest` - runs the server side tests (note jest not test)
-cd into the client directory and `yarn test` - runs client tests
+- `yarn install`
+- `yarn start`: to run both app and server
+- `yarn server`: to run just the server
+- `yarn server-temp`: I added this to run the server by itself but with respawning on code changes
+- `yarn jest`: runs the server side tests (note jest not test)
+- cd into the client directory and `yarn test`: runs client tests
 
 ## My approach
 
