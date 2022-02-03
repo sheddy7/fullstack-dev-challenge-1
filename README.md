@@ -1,3 +1,41 @@
+# Challenge write up
+
+## To use
+
+Standard setup really, I have not changed much in that respect so:
+`yarn install`
+`yarn start` - to run both app and server
+`yarn server` - to run just the server
+`yarn server-temp` - I added this to run the server by itself but with respawning on code changes
+`yarn jest` - runs the server side tests (note jest not test)
+cd into the client directory and `yarn test` - runs client tests
+
+## My approach
+
+My approach was to focus on the server side first and start by implementing the function to calculate the monthly projection values. At this point I also decided to configure jest to work on the server as the test runner as I am far more familiar with it. After that I added a basic structure to handle and process API requests using a pattern of routing/controllers/services I had used before. I would also add resolvers and DTO definitions if the server needed to call other external services in the future.
+
+On the client side I decided to use one main container to handle the state. I briefly considered using React Context but I believe it would be overkill for what is required here. I separated out the components as logically as I could and added tests where I thought appropriate. I delibrately steered away from testing things that the components from Chakra UI where handling completely with no customisation on my side (e.g. Slider and NumberInput are just passed standard props with no additional logic). On the UX side I didn't overhaul the look and feel hugely (design is defintely not a strong suit of mine!) but tried to tweak and add elements that made it more usable. Key examples would be the ability to overide the sliders with precise values using number inputs and displaying the totals at the end of the 50 year period underneath. One other thing to mention is that I built the app in a way that made it easy to switch the length from 50 years by updating 1 constant so that if this was a real world application it would not be hard to atapt it in the future to allow the user to alter the length of time.
+
+## What I like about my solution
+- Using TypeScript! This was a great oppourtunity to try out something I had only just started learning. I did have to resort to @ts-nocheck in a few places and I'm sure there are few best practices I'm not following yet but I've definitely learnt a great deal.
+- Using Chakra UI. I've not had much experience with 3rd party component libraries in the past, we haver tended to build our own components, and I really liked how it's so easy to use and customise the components to your needs.
+- Getting the debounce working, took a while to find a pattern that worked but definitely needed as without it there are 100s of requests sent when updating the sliders.
+- The way the overrides work to make it easy to specify precise amounts 
+
+## What I'd like to improve
+- Cleaning up the TypeScript no checks!
+- Adding a loading state via a Higher Order Component pattern
+- Clean up an error thrown by 1 client test (even though it passes) about state updates on an unmounted component
+
+## Screenshots
+
+<img width="1437" alt="Screenshot 2022-02-03 at 16 28 19" src="https://user-images.githubusercontent.com/36210203/152393878-4a1c7f04-3b91-479f-8f02-33dd10ee7f43.png">
+
+<img width="1435" alt="Screenshot 2022-02-03 at 16 28 27" src="https://user-images.githubusercontent.com/36210203/152393931-ea9ad0df-c99a-447b-97e7-3cd3525be59f.png">
+
+<img width="1438" alt="Screenshot 2022-02-03 at 16 28 44" src="https://user-images.githubusercontent.com/36210203/152393980-54c49957-45bb-4c65-a4bf-73a08f3ec54a.png">
+
+
 # Finimize Full-Stack Development Challenge
 
 This repo is intended to be forked and uploaded to your own Github account in
