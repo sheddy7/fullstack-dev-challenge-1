@@ -1,7 +1,8 @@
 import { ChartLegendOptions, ChartOptions } from 'chart.js'
 import React from 'react'
 import { Line } from 'react-chartjs-2'
-import theme from '../theme'
+import theme from '../../theme'
+import { getTooltipTitle, getTooltipLabel } from '../../lib'
 
 type Props = {
     xAxisData: number[] | string[]
@@ -20,6 +21,7 @@ const LineChart = ({ xAxisData, yAxisData, title, xLabel, yLabel }: Props) => {
         title: {
             display: !!title,
             text: title,
+            fontSize: 16,
         },
         scales: {
             gridLines: { display: false },
@@ -36,6 +38,14 @@ const LineChart = ({ xAxisData, yAxisData, title, xLabel, yLabel }: Props) => {
                     gridLines: { display: false },
                 },
             ],
+        },
+        tooltips: {
+            titleFontSize: 16,
+            bodyFontSize: 14,
+            callbacks: {
+                title: (tooltipItems) => getTooltipTitle(tooltipItems),
+                label: (tooltipItem) => getTooltipLabel(tooltipItem),
+            },
         },
     }
 
