@@ -28,6 +28,7 @@ One other thing to mention is I tested the figures produced by my implementation
 - Cleaning up the TypeScript no checks!
 - Adding a loading state via a Higher Order Component pattern
 - Clean up an error thrown by 1 client test (even though it passes) about state updates on an unmounted component
+- Testing of the Slider. I couldn't find a way to test changing the slider properly with React Testing Library. The issue is that when it is rendered using jsdom it effectively has no dimensions (0 width, 0 height) so any simulated click always just results in setting it to the min value. With MaterialUI Slider I found a method of overriding the bounding box function to give it simulated dimensions which then allowed it to receive clicks to different positions. However, this didn't work with Chakra UI for some reason. Potentially you could cover this with E2E tests using Cypress or similar.
 
 ## Screenshots
 
